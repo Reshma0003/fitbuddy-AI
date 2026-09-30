@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+FitBuddy – Error
+{% endblock %}
+
+
+{% block content %}
+
+<div class="center-card card error-card">
+
+    <p class="eyebrow">
+        SOMETHING WENT WRONG
+    </p>
+
+
+    <h1>
+        We couldn't complete that request.
+    </h1>
+
+
+    <p>
+        {{ message }}
+    </p>
+
+
+    <a
+        class="button primary"
+        href="/"
+    >
+        Back to FitBuddy
+    </a>
+
+</div>
+
+{% endblock %}

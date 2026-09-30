@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block title %}
+FitBuddy – Generate Your Plan
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div>
+
+        <p class="eyebrow">
+            GEMINI-POWERED FITNESS PLANNER
+        </p>
+
+
+        <h1>
+            Your personalized
+            <br>
+            <span>7-day fitness plan.</span>
+        </h1>
+
+
+        <p class="hero-copy">
+
+            Tell FitBuddy about your goal and
+            preferred intensity.
+
+            Gemini creates a structured workout
+            plan and a practical nutrition or
+            recovery tip.
+
+        </p>
+
+    </div>
+
+
+    <div class="card form-card">
+
+        <h2>
+            Create your plan
+        </h2>
+
+
+        <form
+            action="/generate-workout"
+            method="post"
+            id="plan-form"
+        >
+
+            <div class="grid two">
+
+                <label>
+
+                    Name
+
+                    <input
+                        name="name"
+                        required
+                        minlength="2"
+                        maxlength="100"
+                        placeholder="Abinaya"
+                    >
+
+                </label>
+
+
+                <label>
+
+                    User ID
+
+                    <input
+                        name="user_id"
+                        required
+                        pattern="[A-Za-z0-9_-]+"
+                        maxlength="50"
+                        placeholder="user001"
+                    >
+
+                </label>
+
+            </div>
+
+
+            <div class="grid two">
+
+                <label>
+
+                    Age
+
+                    <input
+                        name="age"
+                        type="number"
+                        min="18"
+                        max="100"
+                        required
+                        placeholder="21"
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Weight (kg)
+
+                    <input
+                        name="weight"
+                        type="number"
+                        min="25"
+                        max="300"
+                        step="0.1"
+                        required
+                        placeholder="60"
+                    >
+
+                </label>
+
+            </div>
+
+
+            <label>
+
+                Fitness goal
+
+                <select
+                    name="goal"
+                    required
+                >
+
+                    <option value="">
+                        Select a goal
+                    </option>
+
+                    <option value="weight loss">
+                        Weight loss
+                    </option>
+
+                    <option value="muscle gain">
+                        Muscle gain
+                    </option>
+
+                    <option value="general wellness">
+                        General wellness
+                    </option>
+
+                    <option value="flexibility">
+                        Flexibility
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+
+                Workout intensity
+
+                <select
+                    name="intensity"
+                    required
+                >
+
+                    <option value="">
+                        Select intensity
+                    </option>
+
+                    <option value="low">
+                        Low
+                    </option>
+
+                    <option value="medium">
+                        Medium
+                    </option>
+
+                    <option value="high">
+                        High
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <button
+                class="primary"
+                type="submit"
+            >
+
+                ✨ Generate with Gemini
+
+            </button>
+
+
+            <p class="small">
+
+                Your details are stored in local
+                SQLite for this demo.
+
+                Do not enter sensitive information.
+
+            </p>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<section class="feature-grid">
+
+    <article>
+
+        <b>
+            7 days
+        </b>
+
+        <span>
+            Structured day-by-day routine
+        </span>
+
+    </article>
+
+
+    <article>
+
+        <b>
+            AI feedback
+        </b>
+
+        <span>
+            Regenerate your plan from feedback
+        </span>
+
+    </article>
+
+
+    <article>
+
+        <b>
+            Nutrition
+        </b>
+
+        <span>
+            Goal-aligned recovery guidance
+        </span>
+
+    </article>
+
+</section>
+
+{% endblock %}

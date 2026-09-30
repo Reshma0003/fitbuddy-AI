@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+FitBuddy – Admin
+{% endblock %}
+
+
+{% block content %}
+
+<div class="center-card card">
+
+    <p class="eyebrow">
+        ADMIN
+    </p>
+
+
+    <h1>
+        Admin dashboard
+    </h1>
+
+
+    <p>
+
+        Enter the admin token configured
+        in your .env file.
+
+    </p>
+
+
+    <form
+        action="/admin-login"
+        method="post"
+    >
+
+        <label>
+
+            Admin token
+
+            <input
+                type="password"
+                name="token"
+                required
+            >
+
+        </label>
+
+
+        <button
+            class="primary"
+            type="submit"
+        >
+            Open dashboard
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

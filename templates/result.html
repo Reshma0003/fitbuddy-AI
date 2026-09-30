@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+FitBuddy – Your Plan
+{% endblock %}
+
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <p class="eyebrow">
+            YOUR GEMINI PLAN
+        </p>
+
+        <h1>
+            Hi, {{ user.name }} 👋
+        </h1>
+
+    </div>
+
+
+    <a
+        class="button secondary"
+        href="/"
+    >
+        Create another
+    </a>
+
+</div>
+
+
+{% if message %}
+
+<div class="success">
+
+    ✓ {{ message }}
+
+</div>
+
+{% endif %}
+
+
+<section class="profile-grid">
+
+    <div>
+        <span>Name</span>
+        <b>{{ user.name }}</b>
+    </div>
+
+
+    <div>
+        <span>User ID</span>
+        <b>{{ user.user_id }}</b>
+    </div>
+
+
+    <div>
+        <span>Age</span>
+        <b>{{ user.age }}</b>
+    </div>
+
+
+    <div>
+        <span>Weight</span>
+        <b>{{ user.weight }} kg</b>
+    </div>
+
+
+    <div>
+        <span>Goal</span>
+        <b>{{ user.goal|title }}</b>
+    </div>
+
+
+    <div>
+        <span>Intensity</span>
+        <b>{{ user.intensity|title }}</b>
+    </div>
+
+</section>
+
+
+<section class="content-grid">
+
+
+    <div class="card plan-card">
+
+        <div class="section-title">
+
+            <h2>
+                🏋️ 7-Day Workout Plan
+            </h2>
+
+            <span>
+                Gemini
+            </span>
+
+        </div>
+
+
+        <pre>{{ active_plan }}</pre>
+
+    </div>
+
+
+    <aside class="card tip-card">
+
+        <div class="section-title">
+
+            <h2>
+                🥗 Nutrition / Recovery Tip
+            </h2>
+
+            <span>
+                Gemini
+            </span>
+
+        </div>
+
+
+        <p>
+            {{ plan.nutrition_tip }}
+        </p>
+
+    </aside>
+
+</section>
+
+
+<section class="card feedback-card">
+
+    <h2>
+        Refine your plan
+    </h2>
+
+
+    <p>
+
+        Tell FitBuddy what you want changed.
+
+        Examples:
+
+        "more cardio",
+
+        "include more rest days",
+
+        "add yoga".
+
+    </p>
+
+
+    <form
+        action="/submit-feedback"
+        method="post"
+    >
+
+        <input
+            type="hidden"
+            name="user_id"
+            value="{{ user.user_id }}"
+        >
+
+
+        <textarea
+            name="feedback"
+            maxlength="1000"
+            required
+            placeholder="Example: Add two cardio sessions and make Day 7 a recovery day."
+        ></textarea>
+
+
+        <button
+            class="primary"
+            type="submit"
+        >
+
+            🔄 Update plan with Gemini
+
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

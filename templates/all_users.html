@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+FitBuddy – All Users
+{% endblock %}
+
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <p class="eyebrow">
+            ADMIN DASHBOARD
+        </p>
+
+        <h1>
+            Users & plans
+        </h1>
+
+    </div>
+
+
+    <a
+        class="button secondary"
+        href="/"
+    >
+        Home
+    </a>
+
+</div>
+
+
+{% if not rows %}
+
+<div class="card">
+
+    <p>
+        No users yet.
+    </p>
+
+</div>
+
+{% endif %}
+
+
+{% for user, plans in rows %}
+
+<article class="card admin-user">
+
+    <div class="admin-user-head">
+
+        <div>
+
+            <h2>
+                {{ user.name }}
+            </h2>
+
+            <p>
+
+                {{ user.user_id }}
+
+                · {{ user.age }} yrs
+
+                · {{ user.weight }} kg
+
+                · {{ user.goal|title }}
+
+                · {{ user.intensity|title }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    {% for plan in plans %}
+
+    <details
+        {% if loop.first %}
+        open
+        {% endif %}
+    >
+
+        <summary>
+
+            Plan #{{ plan.id }}
+
+            · {{ plan.created_at }}
+
+        </summary>
+
+
+        <div class="admin-plans">
+
+
+            <div>
+
+                <h3>
+                    Original
+                </h3>
+
+                <pre>
+{{ plan.original_plan }}
+                </pre>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Updated
+                </h3>
+
+                <pre>
+{{ plan.updated_plan or "No feedback update yet." }}
+                </pre>
+
+            </div>
+
+        </div>
+
+
+        {% if plan.feedback %}
+
+        <div class="feedback-note">
+
+            <b>
+                Feedback:
+            </b>
+
+            {{ plan.feedback }}
+
+        </div>
+
+        {% endif %}
+
+    </details>
+
+    {% endfor %}
+
+</article>
+
+{% endfor %}
+
+{% endblock %}
