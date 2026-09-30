@@ -1,3 +1,0 @@
-"""
-FitBuddy application package.
-"""
